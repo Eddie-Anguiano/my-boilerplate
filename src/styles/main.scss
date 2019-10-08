@@ -1,23 +1,5 @@
-@import 'helpers/variables';
-@import 'helpers/functions';
-@import 'helpers/mixins';
-@import 'helpers/mybrary';
-@import 'helpers/placeholders';
-
-@import 'vendors/normalize';
-
-@import 'base/base';
-@import 'base/typography';
-
-@import 'layout/nav';
-@import 'layout/grid';
-@import 'layout/header';
-@import 'layout/footer';
-@import 'layout/sidebar';
-@import 'layout/forms';
-
-@import 'components/buttons';
-@import 'components/carousel';
-
-@import 'pages/home';
-@import 'pages/contact';
+@import 'helpers/index';
+@import 'base/index';
+@import 'layout/index';
+@import 'modules/index';
+@import 'pages/index';
