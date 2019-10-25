@@ -1,9 +1,9 @@
 //-----------------------------------
-//ANIMATE1*/
+//animate__form1*/
 //-----------------------------------
 //On-focus the input placeholder text floats upward and becomes a header
 
-@mixin animate1($width, $color) {
+@mixin animate__form1($width, $color) {
   // Required HTML:
   // <div class="my-animate1-form">
   //     <input
@@ -21,9 +21,9 @@
     box-shadow: none;
   }
 
-  $form: "my-animate1-form";
-  $label-name: "my-animate1-form__label";
-  $content-name: "my-animate1-form__label-content";
+  $form: 'my-animate1-form';
+  $label-name: 'my-animate1-form__label';
+  $content-name: 'my-animate1-form__label-content';
 
   .#{$form} {
     position: relative;
@@ -59,7 +59,7 @@
       border-bottom: 1px solid black;
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         left: 0px;
         bottom: -1px;
@@ -76,6 +76,40 @@
         left: 0px;
         transition: all 0.3s ease;
       }
+    }
+  }
+}
+
+//-----------------------------------
+//animate__link1*/
+//-----------------------------------
+//changes link color and adds underline that appears from the middle out.
+
+// @include inside of <a> tag
+@mixin animate__link1($color, $underline-width, $color-start: inherit) {
+  position: relative;
+  padding: 3px;
+  color: $color-start;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out 0s;
+
+  &::before {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 0;
+    height: $underline-width;
+    width: 100%;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+    background-color: $color;
+  }
+
+  &:hover {
+    color: $color;
+
+    &:before {
+      transform: scaleX(1);
     }
   }
 }
