@@ -59,6 +59,7 @@ const buildJS = 'build/scripts';
 function javascript() {
   return gulp
     .src(jsSRC)
+    .pipe(sourcemaps.init())
     .pipe(concat(minJS))
     .pipe(
       babel({
@@ -73,6 +74,7 @@ function javascript() {
       })
     )
     .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
     .pipe(lineec())
     .pipe(gulp.dest(buildJS));
 }
