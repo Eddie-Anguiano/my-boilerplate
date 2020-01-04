@@ -139,8 +139,12 @@
     overflow: hidden;
     text-align: center;
 
-    &:hover .#{$figure}__figcaption:before,
     &:hover .#{$figure}__sub-header {
+      transform: translate3d(0, -200%, 0);
+      opacity: 1;
+    }
+
+    &:hover .#{$figure}__figcaption:before {
       transform: translate3d(0, 0, 0);
       opacity: 1;
     }
@@ -154,7 +158,10 @@
       position: absolute;
       top: 0;
       left: 0;
-      max-width: 100%;
+      height: $height;
+      width: $width;
+      object-fit: cover;
+      object-position: center;
     }
     &__figcaption {
       height: 100%;
@@ -197,12 +204,14 @@
     &__sub-header {
       width: 100%;
       position: absolute;
-      top: 90%;
-      transform: translate3d(0, 50%, 0);
+      top: 95%;
+      transform: translate3d(0, -100%, 0);
       color: $color-light;
       opacity: 0;
       transition: transform 0.35s, opacity 0.35s;
       z-index: 2;
+      margin-bottom: 10px;
     }
+    @content;
   }
 }
