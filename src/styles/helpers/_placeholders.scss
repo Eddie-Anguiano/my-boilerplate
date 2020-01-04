@@ -1,0 +1,15 @@
+// Clearfix
+%clearfix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+// Center Content
+%center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

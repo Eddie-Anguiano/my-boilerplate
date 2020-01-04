@@ -1,6 +1,31 @@
+// Font Stacks
+// $font-url--google: 'https://fonts.googleapis.com/css?family=Lato:300i,400|Raleway:300i,400,600,700&display=swap';
+
+// $font-family--primary: 'Lato', sans-serif, Helvetica, Arial;
+// $font-family--secondary: 'Raleway', sans-serif, Helvetica, Arial;
+
+//Font weights
+// $font-weight--light: 300;
+// $font-weight--regular: 400;
+// $font-weight--semi-bold: 600;
+// $font-weight--bold: 700;
+
+//Breakpoints
+// $breakpoint-lg: 1200px;
+// $breakpoint-md: 716px;
+// $breakpoint-sm: 300px;
+
+//Colors
+$color-white: #fff;
+$color-black: rgb(44, 44, 44);
+
 //Text
 $base__font-size: 16px;
 $base__line: 24px;
+$base__word-spacing: 3px;
 
 //images
 $img-path: '../images';
+
+//Border Radius
+// $border-radius--small: 4px;
