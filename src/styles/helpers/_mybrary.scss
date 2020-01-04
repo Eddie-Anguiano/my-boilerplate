@@ -113,3 +113,96 @@
     }
   }
 }
+
+//-----------------------------------
+//animate-hover1*/
+//-----------------------------------
+//background gradient rises from bottom and fades in. Header changes from dark to light.  Sub-header rises up bottom slightly while fading in.
+//$color-dark argument should be in rgba format
+
+//required html
+// <figure class="my-animate-hover1">
+//   <img src="" alt="" class="my-animate-hover1__img" />
+//   <figcaption class="my-animate-hover1__figcaption">
+//     <h2 class="my-animate-hover1__header"></h2>
+//     <p class="my-animate-hover1__sub-header"></p>
+//   </figcaption>
+// </figure>
+
+@mixin animate-hover1($height, $width, $color-dark, $color-light: white) {
+  $figure: 'my-animate-hover1';
+
+  .#{$figure} {
+    position: relative;
+    height: $height;
+    width: $width;
+    overflow: hidden;
+    text-align: center;
+
+    &:hover .#{$figure}__figcaption:before,
+    &:hover .#{$figure}__sub-header {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+
+    &:hover .#{$figure}__header {
+      transform: translate3d(-50%, -200%, 0);
+      color: $color-light;
+    }
+
+    &__img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 100%;
+    }
+    &__figcaption {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: transform 0.35s, color 0.35s;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(
+          to bottom,
+          transparentize($color-dark, 1) 0%,
+          transparentize($color-dark, 0.3) 75%
+        );
+        z-index: 1;
+        transform: translate3d(0, 50%, 0);
+        opacity: 0;
+        transition: transform 0.35s, opacity 0.35s;
+      }
+    }
+
+    &__header {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      z-index: 2;
+      color: $color-dark;
+      transition: color 0.35s, transform 0.35s;
+    }
+
+    &__sub-header {
+      width: 100%;
+      position: absolute;
+      top: 90%;
+      transform: translate3d(0, 50%, 0);
+      color: $color-light;
+      opacity: 0;
+      transition: transform 0.35s, opacity 0.35s;
+      z-index: 2;
+    }
+  }
+}
