@@ -118,7 +118,6 @@
 //animate-hover1*/
 //-----------------------------------
 //background gradient rises from bottom and fades in. Header changes from dark to light.  Sub-header rises up bottom slightly while fading in.
-//$color-dark argument should be in rgba format
 
 //required html
 // <figure class="my-animate-hover1">
@@ -213,5 +212,116 @@
       margin-bottom: 10px;
     }
     @content;
+  }
+}
+
+//-----------------------------------
+// animate-hover2*/
+//-----------------------------------
+// cross-hatch borders animate in opposite directions.
+// header animates down
+// subheader fades in from center
+// subtle overlay fades in
+
+// required html
+// <figure class="my-animate-hover2">
+//   <img src="" alt="" class="my-animate-hover2__img" />
+//   <figcaption class="my-animate-hover2__figcaption">
+//     <h2 class="my-animate-hover2__header">my-animate-hover2</h2>
+//     <p class="my-animate-hover2__sub-header">animated border and header<br/>subheader and overy fades in</p>
+//   </figcaption>
+// </figure>
+
+@mixin animate-hover2($height, $width, $border-color: white, $overlay-color: black) {
+  $figure: 'my-animate-hover2';
+  body {
+    @extend %center;
+  }
+
+  .#{$figure} {
+    position: relative;
+    height: $height;
+    width: $width;
+    background-color: gray;
+
+    &__img {
+      height: $height;
+      width: $width;
+      object-fit: cover;
+    }
+
+    &__figcaption {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: transparentize(black, 1);
+      transition: background-color 0.35s ease-in-out;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 20px;
+        bottom: 20px;
+        left: 50px;
+        right: 50px;
+        border-left: 1px solid $border-color;
+        border-right: 1px solid $border-color;
+        z-index: 2;
+        transform: scale(1, 0);
+        transition: transform 0.35s ease-in-out;
+        transform-origin: top;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50px;
+        bottom: 50px;
+        left: 20px;
+        right: 20px;
+        border-top: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
+        z-index: 2;
+        transform: scale(0, 1);
+        transition: transform 0.35s ease-in-out;
+        transform-origin: left;
+      }
+    }
+
+    &__header {
+      transform: translateY(-50%);
+      transition: transform 0.35s ease-in-out;
+    }
+
+    &__subheader {
+      opacity: 0;
+      transform: scale(1, 0);
+      margin-top: 20px;
+      transition: opacity 0.5s ease-in-out, transform 0.1s ease-in-out;
+    }
+
+    &:hover .my-animate-hover2__figcaption:before,
+    &:hover .my-animate-hover2__figcaption:after,
+    &:hover .my-animate-hover2__subheader {
+      transform: scaleX(1);
+    }
+
+    &:hover .my-animate-hover2__figcaption {
+      background-color: transparentize($overlay-color, 0.8);
+    }
+
+    &:hover .my-animate-hover2__subheader {
+      opacity: 1;
+    }
+
+    &:hover .my-animate-hover2__header {
+      transform: translateY(0);
+    }
   }
 }
